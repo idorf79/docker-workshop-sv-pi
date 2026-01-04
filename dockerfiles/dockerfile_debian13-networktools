@@ -1,0 +1,5 @@
+FROM debian:13-slim
+
+RUN apt update
+RUN apt install -y iputils-ping traceroute
+
