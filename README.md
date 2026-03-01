@@ -1,6 +1,6 @@
 # Workshop Docker for StudieVereniging Promptus Imperii
 
-Here are some commmands as used during the workshop.
+Here are some commands as used during the workshop.
 
 For more information, check Docker Cli reference page: https://docs.docker.com/reference/cli/docker/
 
@@ -8,7 +8,7 @@ For more information, check Docker Cli reference page: https://docs.docker.com/r
 
 Build an image
 ```
-docker build -f dockerfiles/dockerfile_debian13-slim -t debian13-slim .
+docker build -f 02-building/dockerfile -t debian13-slim .
 ```
 
 Run a bash shell in the container:
@@ -31,7 +31,7 @@ docker run -d --name web -p 8380:80 -v ./:/usr/share/nginx/html:ro nginx:alpine
 ```
 
 ## Rust development (build)
-In the 'rust' folder.
+In the '04-compilation' folder.
 ```
 docker build -t rust-dev .
 ```
