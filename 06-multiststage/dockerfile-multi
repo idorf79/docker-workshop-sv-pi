@@ -1,0 +1,20 @@
+# Stage 1: Build
+FROM ubuntu:22.04 AS builder
+
+RUN apt-get update && apt-get install -y \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+COPY calculator.cpp .
+
+RUN g++ -static -o calculator calculator.cpp
+
+# Stage 2: Runtime
+FROM alpine:latest
+
+WORKDIR /app
+COPY --from=builder /build/calculator .
+
+ENTRYPOINT ["./calculator"]
+CMD ["10", "+", "5"]

@@ -68,6 +68,26 @@ Run the rust program
 ```
 ```
 
+## Multi stage
+
+In the '06-multistage' directory.
+
+Build the large image:
+```
+docker build -t calculator-large -f dockerfile-large .
+```
+
+Check the size of the image:
+```
+docker images | grep calculator
+```
+
+Build the multi-stage image(s):
+```
+docker build -t calculator-multi -f dockerfile-multi .
+```
+
+
 
 # Communication between containers
 

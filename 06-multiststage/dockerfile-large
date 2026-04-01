@@ -1,0 +1,12 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    g++ \
+    make
+
+WORKDIR /app
+COPY calculator.cpp .
+
+RUN g++ -o calculator calculator.cpp
+
+CMD ["./calculator", "10", "+", "5"]
