@@ -28,19 +28,28 @@ exit
 
 ## A simple webserver
 
-In the '03-network' directory.
+In the '03-webserver' directory.
 
-This command will start a NginX webserver, reachable via http://localhost:8380
+Build the image.
 
 ```
-docker run -d --name web -p 8380:80 -v ./:/usr/share/nginx/html:ro nginx:alpine
+docker build -f dockerfile -t 03-webserver-demo .
 ```
+
+Run the image.
+
+```
+docker run -t 03-webserver-demo
+```
+
+Check if you can reach the webserver. (Start a webbrowser and connect to http://localhost:8000)
+
 
 ## Use volumes i.s.o. copying files into the image
 
 In the '04-volumes' directory.
 
-TODO:
+Build and run the image.
 
 ## Rust development (build)
 
@@ -51,8 +60,14 @@ docker build -t rust-dev .
 
 Run a Rust build on a given project.
 ```
-docker run --volume ./my-rust-app/hello-world:/workdir -t rust-dev
+docker run --volume ./hello-world:/workdir -t rust-dev
 ```
+
+Run the rust program
+
+```
+```
+
 
 # Communication between containers
 
