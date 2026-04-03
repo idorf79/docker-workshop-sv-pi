@@ -1,0 +1,24 @@
+# Stage 1: Build
+FROM debian:13-slim AS rust-builder
+
+WORKDIR /build
+
+COPY hello-world/ .
+
+SHELL ["/bin/bash", "-c"]
+RUN apt update
+RUN apt install -y curl build-essential
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+ENV PATH=${PATH}:/root/.cargo/bin
+
+RUN cargo clean 
+RUN cargo build
+
+# Stage 2: Runtime
+FROM debian:13-slim
+
+WORKDIR /app
+COPY --from=rust-builder /build/target/debug/hello-world .
+
+CMD ["./hello-world"]
