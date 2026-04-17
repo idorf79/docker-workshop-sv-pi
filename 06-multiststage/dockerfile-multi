@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM ubuntu:22.04 AS builder
+FROM debian:12-slim AS builder
 
 RUN apt-get update && apt-get install -y \
     g++ \
