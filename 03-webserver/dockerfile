@@ -2,6 +2,4 @@ FROM python:3.9-slim
 
 COPY webserver/index.html .
 
-EXPOSE 8000
-
 ENTRYPOINT [ "python", "-m", "http.server", "8000"]
