@@ -14,6 +14,7 @@ For more information, check
 docker run hello-world
 ```
 
+Note: `docker run` is an alias for `docker container run`.
 
 Check Docker Desktop, page: Images.
 
@@ -38,27 +39,38 @@ Check Docker Desktop, page: Images. (And/Or `docker image ls`)
 
 Build an image with a name.
 ```
-docker build -f dockerfile -t debian12-slim .
+docker build -f dockerfile -t my-first-image .
 ```
 Check Docker Desktop, page: Images. (And/Or `docker image ls`)
 
 Build an image with a name and tag.
 ```
-docker build -f dockerfile -t debian12-slim:1.0 .
+docker build -f dockerfile -t my-first-image:1.0 .
 ```
 Check Docker Desktop, page: Images. (And/Or `docker image ls`)
-
-
 
 Run a bash shell in the container:
 
 ```
-docker run -it debian12-slim /bin/bash
+docker run -it my-first-image /bin/bash
 ```
 
 Exit the container:
 ```
 exit
+```
+
+### Data in a container
+
+```
+docker run -it --name my-first-container my-first-image /bin/bash
+```
+
+Make some changes to files in the container and exit.
+
+Restart the container
+```
+docker start -i my-first-container
 ```
 
 ## A simple webserver
