@@ -1,0 +1,19 @@
+services:
+
+  web:
+    build: webserver
+    ports:
+      - 8000:8000
+    volumes:
+    - time_file:/web_files/time
+    depends_on:
+      - time-fetcher
+    
+
+  time-fetcher:
+    build: python-timefetcher
+    volumes:
+    - time_file:/time/time_file
+
+volumes:
+  time_file: 

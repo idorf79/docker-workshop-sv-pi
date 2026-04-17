@@ -134,9 +134,13 @@ Build the multi-stage image(s):
 docker build -t calculator-multi -f dockerfile-multi .
 ```
 
+## Docker Compose
 
+In directory '07-compse':
 
-# Communication between containers
+```
+docker-compose up
+```
 
 ## Create docker "internal" network "my-net"
 
