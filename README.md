@@ -234,6 +234,18 @@ ping <ip-address>
 ping proxy
 ```
 
+## Publishing
+
+To push an image to a registry, in this case Docker Hub is used, the following commands give an example. It uses the name space "idorf79".
+
+```bash
+docker login
+docker image tag rust-rpi-dev:1.0 idorf79/rust-rpi-dev:1.0
+docker image push idorf79/rust-rpi-dev:1.0
+```
+
+If you want to use a local registry, check: <https://hub.docker.com/_/registry>
+
 ## Tips
 
 ### Keep the container as little as possible
