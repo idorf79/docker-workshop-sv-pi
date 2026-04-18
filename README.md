@@ -133,6 +133,8 @@ Run the rust program
 
 ### Make this a cross compiler
 
+Used: <https://sysdev.me/2025/11/27/cross-compiling-rust-for-raspberry-pi/#building-a-custom-cross-image>
+
 Add this to the dockerfile, after setting the path:
 
 ```dockerfile
