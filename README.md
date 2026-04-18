@@ -159,31 +159,44 @@ In directory '08-networking':
 docker-compose up
 ```
 
-### Create docker "internal" network "my-net"
+"De-attach"
+
+### Build a small network-inspector
 
 ```
-docker network create my-net
+docker build -f dockerfile_debian-networktools -t debian-network .
 ```
 
-### Run a simple nginx webserver and a bash shell and check their communication
-
-add the network to connect to via '--network' 
-```
-docker run -d --name web --network my-net nginx:alpine
-```
+### Connect to 'between_containers' network
 
 ```
-docker build -f dockerfiles/dockerfile_debian-networktools -t debian-network .
+docker run -it --network 08-networking_between_containers debian-network /bin/bash
 ```
 
-```
-docker run -it --network my-net debian-network /bin/bash
-```
-
-Check the connection between "debian-network" and the Nginx webserver (from within the "bash" shell):
+Check the connection between "debian-network" and the webserver (from within the "bash" shell):
 ```
 ping web
 ```
+
+### Connect to 'to_host' network
+
+```
+docker run -it --network 08-networking_to_host debian-network /bin/bash
+```
+
+Check the connection between "debian-network" and the webserver (from within the "bash" shell):
+```
+ping web
+```
+
+```
+ping <ip-address>
+```
+
+```
+ping proxy
+```
+
 
 ## Running and automatically removing a container
 
