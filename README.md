@@ -98,6 +98,15 @@ In the '04-volumes' directory.
 
 Build and run the image.
 
+```
+docker build -f dockerfile -t 04-webserver-demo .
+```
+
+To re-use this image at a later stage, tag the image:
+```
+docker tag 04-webserver-demo 04-webserver-demo:1.0
+```
+
 ## Rust development (build)
 
 In the '05-compilation' folder.
