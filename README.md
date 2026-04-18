@@ -122,12 +122,13 @@ docker build -t rust-dev:1.0 .
 Run a Rust build on a given project.
 
 ```bash
-docker run --volume ./hello-world:/workdir -t rust-dev:1.0
+docker run --rm --volume ./hello-world:/workdir -t rust-dev:1.0
 ```
 
 Run the rust program
 
 ```bash
+./hello-world/target/debug/hello-world
 ```
 
 ### Make this a cross compiler
@@ -142,13 +143,13 @@ RUN apt install -y gcc-arm-linux-gnueabihf
 Build the image. Note the name!
 
 ```bash
-docker run --volume ./hello-world:/workdir -t rust-rpi-dev:1.0
+docker build -t rust-rpi-dev:1.0 .
 ```
 
 Build the application for RPI
 
 ```bash
-docker run --volume ./hello-world:/workdir -v ./cargo_config_rpi:/root/.cargo/config.toml -t rust-rpi-dev:1.0 cargo build --target=armv7-unknown-linux-gnueabihf
+docker run --rm --volume ./hello-world:/workdir -v ./cargo_config_rpi:/root/.cargo/config.toml -t rust-rpi-dev:1.0 cargo build --target=armv7-unknown-linux-gnueabihf
 ```
 
 ## Multi stage
