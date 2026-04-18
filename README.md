@@ -116,18 +116,39 @@ docker tag 04-webserver-demo 04-webserver-demo:1.0
 In the '05-compilation' directory:
 
 ```bash
-docker build -t rust-dev .
+docker build -t rust-dev:1.0 .
 ```
 
 Run a Rust build on a given project.
 
 ```bash
-docker run --volume ./hello-world:/workdir -t rust-dev
+docker run --volume ./hello-world:/workdir -t rust-dev:1.0
 ```
 
 Run the rust program
 
 ```bash
+```
+
+### Make this a cross compiler
+
+Add this to the dockerfile, after setting the path:
+
+```dockerfile
+RUN rustup target add armv7-unknown-linux-gnueabihf
+RUN apt install -y gcc-arm-linux-gnueabihf
+```
+
+Build the image. Note the name!
+
+```bash
+docker run --volume ./hello-world:/workdir -t rust-rpi-dev:1.0
+```
+
+Build the application for RPI
+
+```bash
+docker run --volume ./hello-world:/workdir -v ./cargo_config_rpi:/root/.cargo/config.toml -t rust-rpi-dev:1.0 cargo build --target=armv7-unknown-linux-gnueabihf
 ```
 
 ## Multi stage
