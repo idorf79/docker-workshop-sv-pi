@@ -143,6 +143,8 @@ Build the multi-stage image(s):
 docker build -t calculator-multi -f dockerfile-multi .
 ```
 
+Recheck the size
+
 ## Docker Compose
 
 In directory '07-compose':
@@ -198,7 +200,15 @@ ping proxy
 ```
 
 
-## Running and automatically removing a container
+## Tips
+
+### Keep the container as little as possible
+
+### Think before doing
+
+Write down expectations (in words and/or drawings)
+
+### Running and automatically removing a container
 
 Use '--rm' like:
 
@@ -207,6 +217,28 @@ docker run --rm -it --network my-net debian-network /bin/bash
 ```
 
 This will remove the container after it's finished running.
+
+### Write used commands down
+
+### Try to reuse images
+
+### Keep dynamic data out of the containers - use volumes
+
+### In production use tags, not 'latest'/'stable'
+
+### Name your containers
+```
+docker run -it --name my-web-server -p 8000:8000 04-webserver-demo:1.0
+```
+Restart/continue:
+```
+docker start my-web-server
+```
+```
+docker rm my-web-server
+```
+
+### Don't be scared to make mistakes
 
 
 ## Clean-up
