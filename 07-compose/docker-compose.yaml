@@ -1,13 +1,14 @@
 services:
 
   web:
-    build: webserver
+    image: 04-webserver-demo:1.0
     container_name: python-webserver
     restart: unless-stopped
     ports:
       - 8000:8000
     volumes:
-    - time_file:/web_files/time
+    - ./webserver/web_root:/app # <--- This is a relative path. So it depends where you start the image
+    - time_file:/app/time
     depends_on:
       - time-fetcher
     
