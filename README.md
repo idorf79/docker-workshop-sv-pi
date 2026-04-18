@@ -29,7 +29,7 @@ Quit the 'bash' terminal.
 
 ## Build a simple Debian container
 
-In the '02-building' 
+In the '02-building' directory:
 
 ```
 docker build -f dockerfile .
@@ -75,7 +75,7 @@ docker start -i my-first-container
 
 ## A simple webserver
 
-In the '03-webserver' directory.
+In the '03-webserver' directory:
 
 Build the image.
 
@@ -94,7 +94,7 @@ Check if you can reach the webserver. (Start a webbrowser and connect to http://
 
 ## Use volumes i.s.o. copying files into the image
 
-In the '04-volumes' directory.
+In the '04-volumes' directory:
 
 Build and run the image.
 
@@ -109,7 +109,7 @@ docker tag 04-webserver-demo 04-webserver-demo:1.0
 
 ## Rust development (build)
 
-In the '05-compilation' folder.
+In the '05-compilation' directory:
 ```
 docker build -t rust-dev .
 ```
@@ -126,7 +126,7 @@ Run the rust program
 
 ## Multi stage
 
-In the '06-multistage' directory.
+In the '06-multistage' directory:
 
 Build the large image:
 ```
@@ -147,7 +147,7 @@ Recheck the size
 
 ## Docker Compose
 
-In directory '07-compose':
+In the '07-compose' directory:
 
 ```
 docker-compose up
@@ -155,7 +155,7 @@ docker-compose up
 
 ## Networking
 
-In directory '08-networking':
+In the '08-networking' directory:
 
 ```
 docker-compose up
