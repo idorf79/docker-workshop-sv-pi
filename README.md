@@ -145,19 +145,27 @@ docker build -t calculator-multi -f dockerfile-multi .
 
 ## Docker Compose
 
-In directory '07-compse':
+In directory '07-compose':
 
 ```
 docker-compose up
 ```
 
-## Create docker "internal" network "my-net"
+## Networking
+
+In directory '08-networking':
+
+```
+docker-compose up
+```
+
+### Create docker "internal" network "my-net"
 
 ```
 docker network create my-net
 ```
 
-## Run a simple nginx webserver and a bash shell and check their communication
+### Run a simple nginx webserver and a bash shell and check their communication
 
 add the network to connect to via '--network' 
 ```
@@ -190,6 +198,8 @@ This will remove the container after it's finished running.
 
 ## Clean-up
 
+Use the following commands to check and clean-up:
+
 ```
 docker system df
 ```
@@ -199,5 +209,25 @@ docker image prune
 ```
 
 ```
+docker volume ls
+```
+
+```
 docker system prune
+```
+
+```
+docker network ls
+```
+
+```
+docker network prune
+```
+
+```
+docker system prune
+```
+
+```
+docker buildx history ls | tail -n +2 | awk '{print $1}' | xargs -r docker buildx history rm
 ```
