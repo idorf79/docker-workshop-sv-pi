@@ -1,8 +1,10 @@
 services:
 
   web:
-    build: webserver
+    image: 04-webserver-demo:1.0
     restart: unless-stopped
+    volumes:
+    - ./webserver/web_root:/app # <--- This is a relative path. So it depends where you start the image
     networks:
       - between_containers            # Only on internal network, NOT reachable from host
 
