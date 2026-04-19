@@ -248,7 +248,15 @@ If you want to use a local registry, check: <https://hub.docker.com/_/registry>
 
 ## Tips
 
+### Windows mounts
+
+Needs to be tested: `//$(PWD)/folder:/folder`
+
 ### Keep the container as little as possible
+
+- Only add functionality you really need
+- Only for the platform which will be running it
+- Only assign resources which are needed
 
 ### Think before doing
 
@@ -268,7 +276,9 @@ This will remove the container after it's finished running.
 
 ### Try to reuse images
 
-### Keep dynamic data out of the containers - use volumes
+### Keep dynamic data out of the containers
+
+- use volumes or mounts
 
 ### In production use tags, not 'latest'/'stable'
 
