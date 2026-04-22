@@ -4,17 +4,17 @@ services:
     image: 04-webserver-demo:1.0
     restart: unless-stopped
     volumes:
-    - ./webserver/web_root:/app # <--- This is a relative path. So it depends where you start the image
+      - ./webserver/web_root:/app # <--- This is a relative path. So it depends where you start the image
     networks:
-      - between_containers            # Only on internal network, NOT reachable from host
+      - between_containers # Only on internal network, NOT reachable from host
 
   proxy:
     image: nginx:alpine
     ports:
-      - "8080:80"          # Host port → Proxy
+      - "8080:80" # Host port -> Proxy
     networks:
       - between_containers
-      - to_host      # ← Add this so the host can reach it
+      - to_host # <- Add this so the host can reach it
     volumes:
       - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
@@ -23,11 +23,12 @@ services:
 networks:
   between_containers:
     driver: bridge
-    internal: true          # Blocks external traffic — no internet access
+    internal: true # Blocks external traffic — no internet access
   to_host:
     driver: bridge
-  external_between_containers:   # <-- Not used at the moment
+  external_between_host_and_proxy:
+    # <-- Not used at the moment
     external: true
-    driver_opts:    # pass options to driver for network creation
+    driver_opts:
+      # pass options to driver for network creation
       com.docker.network.bridge.host_binding_ipv4: 127.0.0.1
-    
