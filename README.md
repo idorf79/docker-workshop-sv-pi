@@ -274,6 +274,12 @@ This will remove the container after it's finished running.
 
 ### Write used commands down
 
+"Reconnect" to an already running container (start a new process '/bin/bash' inside it):
+
+```bash
+docker container exec -it <running container name or ID> /bin/bash
+```
+
 ### Try to reuse images
 
 ### Keep dynamic data out of the containers
