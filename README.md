@@ -142,6 +142,12 @@ RUN rustup target add armv7-unknown-linux-gnueabihf
 RUN apt install -y gcc-arm-linux-gnueabihf
 ```
 
+Change 'CMD' to:
+
+```dockerfile
+CMD [ "cargo", "build", "--target=armv7-unknown-linux-gnueabihf"]
+```
+
 Build the image. Note the name!
 
 ```bash
@@ -151,7 +157,7 @@ docker build -t rust-rpi-dev:1.0 .
 Build the application for RPI
 
 ```bash
-docker run --rm --volume ./hello-world:/workdir -v ./cargo_config_rpi:/root/.cargo/config.toml -t rust-rpi-dev:1.0 cargo build --target=armv7-unknown-linux-gnueabihf
+docker run --rm --volume ./hello-world:/workdir -v ./cargo_config_rpi:/root/.cargo/config.toml -t rust-rpi-dev:1.0
 ```
 
 ## Multi stage
@@ -324,6 +330,10 @@ docker system df
 
 ```bash
 docker image prune
+```
+
+```bash
+docker rmi $(docker images -q)
 ```
 
 ```bash
